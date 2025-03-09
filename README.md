@@ -1,7 +1,10 @@
-# 🚀 Automatización de la Ejecución de la Aplicación Django
+# 🚀 Automatización de la Ejecución/Despliegue en GKE de la Aplicación Django Mediante github actions
+
+## Automatizar el despliegue de la aplicación en Google Kubernetes Engine (GKE).
+
+![alt text](Github.drawio.png)
 
 Este proyecto permite ejecutar una aplicación **Django** tanto en **Docker** como localmente en **Windows** de manera automatizada.
-
 ---
 
 ## **🛠️ Prerrequisitos**
@@ -66,20 +69,6 @@ Si deseas ejecutar la aplicación en un contenedor Docker, usa el script `run_do
    http://localhost:9095/
    ```
 
-### **🔹 Detener y eliminar el contenedor**
-Si deseas detener y eliminar el contenedor, ejecuta:
-```sh
-docker stop django_app && docker rm django_app
-```
-
-## **📌 Solución de Problemas**
-| Error | Solución |
-|-------|----------|
-| `El entorno virtual no existe` | Ejecuta `python -m venv .venv` manualmente |
-| `Error: Python no encontrado` | Verifica que Python está instalado y agregado a la variable de entorno `PATH` |
-| `Puerto 9095 ocupado` | Detén el proceso que lo usa (`netstat -ano | findstr :9095`) |
-| `docker: command not found` | Verifica que Docker está instalado y corriendo |
-
 ---
 
 ## **📌 Contribuir**
@@ -94,4 +83,3 @@ Este proyecto está bajo la licencia **MIT**.
 🚀 **¡Listo! Ahora puedes ejecutar Django localmente o con Docker de forma automática!** 🚀
 
 
-![alt text](Github.drawio.png)
