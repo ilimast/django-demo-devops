@@ -1,0 +1,21 @@
+.env
+.env.*  # Para evitar que archivos como .env.development sean copiados
+*.pem   # Llaves SSH privadas
+*.key   # Claves privadas SSL
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.git/
+.gitignore
+README.md
+venv/
+*.log
+media/
+static/
+db.sqlite3
+.vscode/
+
+*.bat

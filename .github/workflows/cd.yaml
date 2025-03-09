@@ -1,0 +1,35 @@
+name: CD - Deploy to GKE
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del Código
+        uses: actions/checkout@v3
+
+      - name: Configurar Google Cloud SDK
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_KEY }}
+
+      - name: Configurar `gcloud` y `kubectl`
+        run: |
+          gcloud container clusters get-credentials cer --region us-east1-b
+          kubectl get nodes
+
+      - name: Aplicar todos los manifiestos de `k8s/`
+        run: |
+            kubectl apply -f k8s/
+
+      - name: Aplicar Manifiestos de Kubernetes
+        run: |
+          kubectl set image deployment/django-app django=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/django-app:latest -n app
+          kubectl rollout restart deployment django-app -n app
+
+      - name: Verificar Despliegue
+        run: kubectl get pods -n app

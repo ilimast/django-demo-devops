@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+        - name: django
+          image: docker.io/${DOCKERHUB_USERNAME}/django-app:latest
+          ports:
+            - containerPort: 8000
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+          envFrom:
+            - configMapRef:
+                name: django-config
+            - secretRef:
+                name: django-secrets
+          volumeMounts:
+            - mountPath: /app/staticfiles
+              name: static-volume
+      volumes:
+        - name: static-volume
+          persistentVolumeClaim:
+            claimName: staticfiles-pvc

@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: django-ingress
+  namespace: app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - qa.django.local
+      secretName: qa-django-tls-secret 
+  rules:
+    - host: qa.django.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: django-service
+                port:
+                  number: 8000
+          - path: /static/
+            pathType: Prefix
+            backend:
+              service:
+                name: django-service
+                port:
+                  number: 8000
