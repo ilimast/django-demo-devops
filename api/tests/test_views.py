@@ -1,8 +1,10 @@
 import pytest
 from django.urls import reverse
 from rest_framework.test import APIRequestFactory
-from api.views import UserViewSet
+
 from api.models import User
+from api.views import UserViewSet
+
 
 @pytest.mark.django_db
 def test_get_users_list():

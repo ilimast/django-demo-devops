@@ -1,8 +1,9 @@
 import os
+
 from .base import *
 
 DEBUG = False
-SECRET_KEY =  os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # Cargar variables de entorno desde Kubernetes Secrets o Vault
 DATABASES = {

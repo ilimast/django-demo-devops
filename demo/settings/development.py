@@ -1,9 +1,10 @@
-from os import environ
 import os
+from os import environ
+
 from .base import *
 
 DEBUG = True
-SECRET_KEY =  os.getenv("DJANGO_SECRET_KEY", default="unsafe-secret-key")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", default="unsafe-secret-key")
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", default=["localhost"])
 
 
