@@ -8,4 +8,4 @@ data:
   DATABASE_ENGINE: "django.db.backends.postgrsesql"
   POSTGRES_HOST: "postgres.database.svc.cluster.local"
   POSTGRES_PORT: "5432"
-  ALLOWED_HOSTS: "localhost"
+  ALLOWED_HOSTS: "django-app.consenso.com.ec,localhost"

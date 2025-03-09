@@ -31,9 +31,8 @@ spec:
             - secretRef:
                 name: django-secrets
           volumeMounts:
-            - mountPath: /app/staticfiles
+            - mountPath: /mnt/app/staticfiles
               name: static-volume
       volumes:
         - name: static-volume
-          persistentVolumeClaim:
-            claimName: staticfiles-pvc
+          emptyDir: {}

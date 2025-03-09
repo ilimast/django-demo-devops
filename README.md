@@ -93,3 +93,5 @@ Este proyecto está bajo la licencia **MIT**.
 ---
 🚀 **¡Listo! Ahora puedes ejecutar Django localmente o con Docker de forma automática!** 🚀
 
+
+![alt text](Github.drawio.png)
