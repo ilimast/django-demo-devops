@@ -17,9 +17,14 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_KEY }}
 
+      - name: 🛠️ Instalar gke-gcloud-auth-plugin
+        run: |
+            gcloud components install gke-gcloud-auth-plugin
+            gcloud components update
+            
       - name: Configurar `gcloud` y `kubectl`
         run: |
-          gcloud container clusters get-credentials cer --region us-east1-b
+          gcloud container clusters get-credentials cer --region us-east1-b --project ${{ secrets.GCP_PROJECT }}
           kubectl get nodes
 
       - name: Aplicar todos los manifiestos de `k8s/`
